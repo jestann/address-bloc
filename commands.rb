@@ -54,3 +54,42 @@
 # rails s -p $PORT -b $IP
 #       this could also be run as "rails server -p $PORT -b $IP"
 #       this runs your app, which is super cool, and fully functional!
+
+
+=begin
+
+THIS IS THE CRAP I ADDED AFTER MAKING THE CHARACTER MODEL, 
+TO TIE IT TO THE SCRIPT MODEL
+
+TONS MORE COMMANDS TO WRITE DOWN... but this is what I saved for now.
+
+
+class Script < ActiveRecord::Base
+    has_many :characters
+end
+
+
+class Character < ActiveRecord::Base
+    belongs_to :script
+end
+
+
+THEN I RAKED THE DB AND THEN ADDED ONE LINE TO THE MIGRATION FILE
+
+class CreateCharacters < ActiveRecord::Migration
+  def change
+    create_table :characters do |t|
+      t.string :name
+      t.text :description
+      t.integer :age
+
+      t.timestamps null: false
+      # ADDED THIS LINE
+      t.belongs_to :script, index: true
+    end
+  end
+end
+
+AND THAT'S IT FOR NOW, IT COnNECTED THEM CORRECTLY
+
+=end
