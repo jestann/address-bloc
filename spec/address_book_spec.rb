@@ -84,5 +84,23 @@ RSpec.describe AddressBook do
             entry_five = book.entries[4]
             check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
         end
+        
+        it "imports another 1st entry" do
+            book.import_from_csv("entries_2.csv")
+            entry_1 = book.entries[0]
+            check_entry(entry_1, "Jane", "000-000-1234", "hi")
+        end
+
+        it "imports another 2nd entry" do
+            book.import_from_csv("entries_2.csv")
+            entry_2 = book.entries[1]
+            check_entry(entry_2, "Hello", "000-000-0000", "this")
+        end
+        
+        it "imports yet a 3rd entry" do
+            book.import_from_csv("entries_2.csv")
+            entry_3 = book.entries[2]
+            check_entry(entry_3, "Test", "000-000-0001", "now")
+        end
     end
 end
