@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :acts
+  resources :scenes
   resources :characters
   resources :scripts
   # The priority is based upon order of creation: first created -> highest priority.

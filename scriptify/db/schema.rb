@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330153123) do
+ActiveRecord::Schema.define(version: 20170406151802) do
+
+  create_table "acts", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "script_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "acts", ["script_id"], name: "index_acts_on_script_id"
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +32,16 @@ ActiveRecord::Schema.define(version: 20170330153123) do
   end
 
   add_index "characters", ["script_id"], name: "index_characters_on_script_id"
+
+  create_table "scenes", force: :cascade do |t|
+    t.integer  "act_id"
+    t.integer  "number"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "scenes", ["act_id"], name: "index_scenes_on_act_id"
 
   create_table "scripts", force: :cascade do |t|
     t.string   "title"
