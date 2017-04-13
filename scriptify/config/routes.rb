@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  resources :acts
-  resources :scenes
-  resources :characters
-  resources :scripts
+  resources :scripts do
+    resources :acts
+    resources :scenes
+    resources :characters
+  end
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
