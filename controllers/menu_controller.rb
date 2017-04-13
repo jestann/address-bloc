@@ -14,7 +14,8 @@ class MenuController
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
         puts "5 - View Entry Number n"
-        puts "6 - Exit"
+        puts "6 - Detonate (deletes all entries)"
+        puts "7 - Exit"
         print "Enter your selection: "
         selection = gets.to_i
         puts " "
@@ -36,6 +37,9 @@ class MenuController
                 view_entry_n
                 main_menu
             when 6
+                detonate
+                main_menu
+            when 7
                 puts "Goodbye!"
                 puts " "
                 exit(0)
@@ -193,5 +197,25 @@ class MenuController
         puts "Updated entry:"
         puts entry
         puts " "
+    end
+    
+    def detonate
+        puts "Are you sure you want to detonate? (y/n)"
+        selection = gets.chomp
+        
+        case selection
+            when 'y'
+                @address_book = AddressBook.new
+                puts "Detonation complete!"
+                puts " "
+            when 'n'
+                puts "That was a close one."
+                puts " "
+                main_menu
+            else
+                puts "That is not a valid input."
+                puts " "
+                main_menu
+        end
     end
 end
